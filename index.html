@@ -1,30 +1,31 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" xml:lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ESP IoT Firebase App</title>
-    <!-- update the version number as needed -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESP IoT Firebase App</title>
+  <!-- update the version number as needed -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
 
 
 
-    <!-- jsPDF Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
-    <!-- Highcharts Exporting Module -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <!-- jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <script>
-     // REPLACE WITH YOUR web app's Firebase configuration
+  <!-- Highcharts Exporting Module -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-     const firebaseConfig = {
+  <script>
+    // REPLACE WITH YOUR web app's Firebase configuration
+
+    const firebaseConfig = {
       apiKey: "AIzaSyAxxnDvC7fPfyKq69esOx_TwEoK5bqknUM",
       authDomain: "control-iot-esp-fb943.firebaseapp.com",
       projectId: "control-iot-esp-fb943",
@@ -35,53 +36,58 @@
     };
 
 
-      // Initialize firebase
-      firebase.initializeApp(firebaseConfig);
-      // Make auth and database references
-      const auth = firebase.auth();
-      const db = firebase.database();
-    </script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    // Initialize firebase
+    firebase.initializeApp(firebaseConfig);
+    // Make auth and database references
+    const auth = firebase.auth();
+    const db = firebase.database();
+  </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-  <!--TOP BAR-->
-  <div class="topnav">
-    <h1>Sistema Iot - <i class="fas fa-temperature-high"> </i>  <i class="fas fa-wifi"></i> <i class="fas fa-cogs"></i></h1>
-  </div>
-  
 
-<!-- AUTHENTICATION BAR (USER DETAILS/LOGOUT BUTTON) -->
-<div id="authentication-bar" style="display: none;">
-  <p>
+<body>
+
+
+
+  <!-- AUTHENTICATION BAR (USER DETAILS/LOGOUT BUTTON) -->
+  <div id="authentication-bar" style="display: none;">
+    <p>
       <span id="authentication-status">Usuario logueado</span>
       <span id="user-details">USEREMAIL</span>
       <a href="#" id="logout-link">(logout)</a>
-  </p>
+    </p>
+  </div>
+
+<!-- Contenedor principal del Login -->
+<div class="login-container" id="login-container">
+  <!-- Imagen de fondo -->
+  <div class="background"></div>
+  
+  <!-- Formulario de login -->
+  <form id="login-form" style="display: block;">
+    <div class="form-elements-container">
+      <label for="input-email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" id="input-email" required>
+
+      <label for="input-password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="input-password" required>
+
+      <button type="submit" id="login-button">Login</button>
+
+      <!-- Mensaje de error (Ocultado inicialmente) -->
+      <div id="error-message" class="error-message" style="display: none;">
+        <span class="error-icon">❌</span>
+        <span class="error-text">Los datos de esta cuenta son incorrectos</span>
+      </div>
+    </div>
+  </form>
 </div>
 
-<!-- Formulario de login -->
-<form id="login-form" style="display: block;">
-  <div class="form-elements-container">
-    <label for="input-email"><b>Email</b></label>
-    <input type="email" placeholder="Enter Email" id="input-email" required>
-
-    <label for="input-password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" id="input-password" required>
-
-    <button type="submit" id="login-button">Login</button>
-
-    <!-- Mensaje de error (Ocultado inicialmente) -->
-    <div id="error-message" class="error-message" style="display: none;">
-      <span class="error-icon">❌</span>
-      <span class="error-text">Los datos de esta cuenta son incorrectos</span>
-    </div>
-  </div>
-</form>
 
 
-  
   <!--CONTENT (SENSOR READINGS)-->
   <div class="content-sign-in" id="content-sign-in" style="display: none;">
     <div class="cards">
@@ -94,7 +100,7 @@
     </div>
 
 
-    <div id="charts-div" >
+    <div id="charts-div">
       <!--SET NUMBER OF READINGS INPUT FIELD-->
       <!--TEMPERATURE-CHART-->
       <div class="cards">
@@ -103,12 +109,12 @@
           <div id="chart-temperature" class="chart-container"></div>
         </div>
       </div>
-  
-     <!-- Botón para generar reporte -->
-    <div style="text-align: center; margin-top: 20px;">
-      <button id="generate-report" onclick="generateReport()">Mostrar Historial</button>
 
-    </div>
+      <!-- Botón para generar reporte -->
+      <div style="text-align: center; margin-top: 20px;">
+        <button id="generate-report" onclick="generateReport()">Mostrar Historial</button>
+
+      </div>
 
       <!-- Botón para abrir el manual -->
       <div style="text-align: center; margin-top: 20px;">
@@ -116,16 +122,17 @@
       </div>
     </div>
   </div>
-    
 
- 
-    </div>
+
 
   </div>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/charts-definitions.js"></script>
-    <script src="scripts/reporte.js"></script>
-    <script src="scripts/manual.js"></script>
-  </body>
+
+  </div>
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/charts-definitions.js"></script>
+  <script src="scripts/reporte.js"></script>
+  <script src="scripts/manual.js"></script>
+</body>
+
 </html>

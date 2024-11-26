@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeManual = () => {
         console.log("Botón de cerrar presionado");
         // Redirige a la página principal
-        window.location.href = "temperatura.html"; // Ajusta la ruta según tu estructura de carpetas
+        window.location.href = "../index.html"; // Ajusta la ruta según tu estructura de carpetas
     };
   
     // Asignar eventos a los botones
