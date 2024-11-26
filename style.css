@@ -1,0 +1,163 @@
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: inline-block;
+    text-align: center;
+}
+
+
+p {
+    font-size: 1.2rem;
+}
+
+body {
+    margin: 0;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #049faa;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+#authentication-bar{
+    background-color:mintcream;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#user-details{
+    color: cadetblue;
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+    padding: 5%;
+}
+
+.cards {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.reading {
+    font-size: 1.4rem;
+}
+
+.form-elements-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  /* Estilos para el mensaje de error */
+  .error-message {
+    display: flex;
+    align-items: center;
+    background-color: #f8d7da;  /* Rojo claro */
+    color: #721c24;  /* Texto rojo oscuro */
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+
+  .error-icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+  .error-text {
+    font-weight: bold;
+  }
+
+/*.chart-container {width: 90%;height: 400px; }*/
+
+
+.chart-container {width: 100%; height: 70vh; }
+  
+  
+
+.switch {position: relative; display: inline-block; width: 120px; height: 68px; margin-bottom: 20px;}
+.switch input {display: none;}
+.slider {position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; border-radius: 68px;   opacity: 0.8;   cursor: pointer;}
+.slider:before {position: absolute; content: ""; height: 52px; width: 52px; left: 8px; bottom: 8px; background-color: #fff; -webkit-transition: .4s; transition: .4s; border-radius: 68px}
+input:checked+.slider {background-color: #1b78e2}
+input:checked+.slider:before {-webkit-transform: translateX(52px); -ms-transform: translateX(52px); transform: translateX(52px)}
+
+.slider2 {
+    appearance: none; /* Esto debería ser suficiente */
+    -webkit-appearance: none; /* Aún puedes mantenerlo para compatibilidad */
+    margin: 14px;
+    height: 20px;
+    background: #ccc;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+    margin-bottom: 40px;
+  }
+  
+  .slider2:hover {
+    opacity: 1;
+  }
+  
+  .slider2::-webkit-slider-thumb {
+    appearance: none; /* Reemplaza -webkit-appearance por appearance */
+    width: 40px;
+    height: 40px;
+    background: #008B74;
+    cursor: pointer;
+  }
+  
+
+
+
+
+/*.slider2 { -webkit-appearance: none; margin: 14px;  height: 20px; background: #ccc; outline: none; opacity: 0.8; -webkit-transition: .2s; transition: opacity .2s; margin-bottom: 40px; }
+.slider:hover, .slider2:hover { opacity: 1; }
+.slider2::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 40px; height: 40px; background: #008B74; cursor: pointer; }
+*/
+
+.slider2::-moz-range-thumb { width: 40px; height: 40px; background: #008B74; cursor: pointer;}
+.card-switch {color: #50a2ff; }
+.card-light{ color: #008B74;}
+.card-bme{ color: #572dfb;}
+.card-motion{ color: #3b3b3b; cursor: pointer;}

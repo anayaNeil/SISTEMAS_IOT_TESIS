@@ -1,0 +1,56 @@
+  /* Ocultar manual por defecto */
+  .hidden {
+    display: none;
+  }
+  
+
+/* Estilo para el contenedor del manual */
+#manual-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Contenido del manual */
+  #manual-content {
+    background: #fff;
+    width: 80%;
+    height: 80%;
+    overflow-y: auto; /* Barra de desplazamiento */
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  /* Botón de cierre */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Botón en la parte inferior */
+  #close-footer-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    width: 150px;
+    text-align: center;
+  }
+  
