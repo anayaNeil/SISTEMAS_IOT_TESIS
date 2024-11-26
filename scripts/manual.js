@@ -1,22 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const closeBtn = document.getElementById("close-btn");
-    const closeFooterBtn = document.getElementById("close-footer-btn");
+  const closeTabBtn = document.getElementById("close-tab-btn");
 
-    // Función para cerrar el manual y regresar a la página principal
-    const closeManual = () => {
-        console.log("Botón de cerrar presionado");
-        // Redirige a la página principal
-        window.location.href = "../index.html"; // Ajusta la ruta según tu estructura de carpetas
-    };
-  
-    // Asignar eventos a los botones
-    closeBtn.addEventListener("click", () => {
-        console.log("Botón X presionado");
-        closeManual();
-      });
-      
-    closeFooterBtn.addEventListener("click", () => {
-    console.log("Botón cerrar presionado");
-    closeManual();
-  });
+  // Función para cerrar la pestaña
+  const closeTab = () => {
+      console.log("Cerrando la pestaña del manual...");
+      window.close();
+  };
+
+  // Asignar evento al botón
+  closeTabBtn.addEventListener("click", closeTab);
 });
