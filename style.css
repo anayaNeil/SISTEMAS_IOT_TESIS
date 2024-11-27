@@ -72,12 +72,24 @@ html {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 2rem;
 }
 
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: url('/imagenes/lupulo.webp') no-repeat center top;
+  background-size: 100% auto; /* El ancho ocupa el 100%, y la altura se ajusta automáticamente */
+  background-position: center top; /* Ajusta la posición de la imagen */
+  background-attachment: fixed; /* Opcional, para un efecto de fondo fijo */
+
+  height: auto; /* Permite que el contenedor crezca con la altura */
+  min-height: 100vh; /* Asegura que al menos cubra la pantalla completa */
+  width: 100%;
 }
+
+
 
 .topnav {
   overflow: hidden;
@@ -88,7 +100,7 @@ body {
 }
 
 #authentication-bar {
-  background-color: mintcream;
+
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -102,22 +114,44 @@ body {
 }
 
 .card {
-  background-color: white;
+
   box-shadow: 2px 2px 12px 1px rgba(140, 140, 140, .5);
-  padding: 5%;
+  padding: 3%;
+  border-radius: 8px; /* Bordes redondeados */
 }
 
 .cards {
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%; /* Set the width to 100% of the screen width */
+  max-width: none; /* Remove the max-width restriction */
+
   display: grid;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  background-color: rgba(0, 0, 0, 0.1); /* Transparent with 10% opacity (you can adjust the last value) */
+  padding: 1rem; /* Optional padding for the container */
 }
 
+
+
 .reading {
-  font-size: 1.4rem;
+
+  font-size: 4rem; /* Ajusta el tamaño según tu preferencia */
+  font-family: 'Orbitron', sans-serif; /* Fuente futurista */
+  text-shadow: 0 0 5px rgba(99, 207, 108, 0.8), 0 0 10px rgba(62, 167, 76, 0.8), 0 0 20px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 223, 0, 0.8), 0 0 40px rgba(255, 0, 149, 0.8), 0 0 50px rgba(255, 223, 0, 0.8);
+  color: #080811; /* Color dorado */
+  letter-spacing: 2px; /* Espaciado de las letras */
+  text-align: center;
+  animation: glow 2.5s ease-in-out infinite; /* Animación de resplandor */
 }
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(72, 0, 255, 0.8), 0 0 10px rgba(167, 62, 62, 0.8), 0 0 20px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 223, 0, 0.8), 0 0 40px rgba(255, 0, 149, 0.8), 0 0 50px rgba(255, 223, 0, 0.8);
+  }
+
+
+}
+
 
 .form-elements-container {
   display: flex;
@@ -150,6 +184,7 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 15px;
 }
 
 button:hover {
@@ -290,5 +325,8 @@ input:checked+.slider:before {
 
 
 
-
+.highcharts-background {
+  fill: #d1ceb4
+  
+}
 

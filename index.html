@@ -22,6 +22,9 @@
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+
+
+  
   <script>
     // REPLACE WITH YOUR web app's Firebase configuration
 
@@ -52,14 +55,6 @@
 
 
 
-  <!-- AUTHENTICATION BAR (USER DETAILS/LOGOUT BUTTON) -->
-  <div id="authentication-bar" style="display: none;">
-    <p>
-      <span id="authentication-status">Usuario logueado</span>
-      <span id="user-details">USEREMAIL</span>
-      <a href="#" id="logout-link">(logout)</a>
-    </p>
-  </div>
 
 <!-- Contenedor principal del Login -->
 <div class="login-container" id="login-container">
@@ -97,42 +92,41 @@
 </div>
 
 
+<!-- Barra de autenticación -->
+<div id="authentication-bar" class="auth-bar" style="display: none;">
+  <p>
+    <span id="authentication-status">Usuario logueado</span>
+    <span id="user-details">USEREMAIL</span>
+    <a href="#" id="logout-link">(logout)</a>
+  </p>
+</div>
 
-  <!--CONTENT (SENSOR READINGS)-->
-  <div class="content-sign-in" id="content-sign-in" style="display: none;">
-    <div class="cards">
-      <!--TEMPERATURE-->
-      <div class="card">
-        <p><i class="fas fa-thermometer-half" style="color:#e72b3b;"></i> TEMPERATURA</p>
-        <p><span class="reading"><span id="temp"></span> °C</span></p>
-      </div>
-
-    </div>
-
-
-    <div id="charts-div">
-      <!--SET NUMBER OF READINGS INPUT FIELD-->
-      <!--TEMPERATURE-CHART-->
-      <div class="cards">
-        <div class="card">
-          <p><i class="fas fa-thermometer-half" style="color:#059e8a;"></i> Historial </p>
-          <div id="chart-temperature" class="chart-container"></div>
-        </div>
-      </div>
-
-      <!-- Botón para generar reporte -->
-      <div style="text-align: center; margin-top: 20px;">
-        <button id="generate-report" onclick="generateReport()">Mostrar Historial</button>
-
-      </div>
-
-      <div style="text-align: center; margin-top: 20px;">
-        <button onclick="window.open('scripts/manual.html', '_blank')">Abrir Manual</button>
-      </div>
-      
-      
+<!-- Contenido principal -->
+<div class="content-sign-in" id="content-sign-in" style="display: none;">
+  <div class="cards">
+    <!-- Temperatura -->
+    <div class="card">
+      <p><i class="fas fa-thermometer-half" style="color:#e72b3b;"></i> TEMPERATURA</p>
+      <p><span class="reading"><span id="temp"></span> °C</span></p>
     </div>
   </div>
+
+  <div id="charts-div">
+    <!-- Historial de temperatura -->
+    <div class="cards">
+      <div class="card">
+        <p><i class="fas fa-thermometer-half" style="color:#059e8a;"></i> Historial</p>
+        <div id="chart-temperature" class="chart-container"></div>
+      </div>
+    </div>
+
+    <!-- Botones centrados -->
+    <div class="buttons-container">
+      <button id="generate-report" onclick="generateReport()">Mostrar Historial</button>
+      <button onclick="window.open('scripts/manual.html', '_blank')">Abrir Manual</button>
+    </div>
+  </div>
+</div>
 
 
 
