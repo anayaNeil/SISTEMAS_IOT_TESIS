@@ -67,16 +67,19 @@
   <div class="background"></div>
   
   <!-- Formulario de login -->
-  <form id="login-form" style="display: block;">
+  <form id="login-form">
     <div class="form-elements-container">
-      <label for="input-email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" id="input-email" required>
-
-      <label for="input-password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" id="input-password" required>
-
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="email" placeholder="Usuario" id="input-email" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Contraseña" id="input-password" required>
+      </div>
+  
       <button type="submit" id="login-button">Login</button>
-
+  
       <!-- Mensaje de error (Ocultado inicialmente) -->
       <div id="error-message" class="error-message" style="display: none;">
         <span class="error-icon">❌</span>
@@ -84,6 +87,13 @@
       </div>
     </div>
   </form>
+  
+  
+
+
+
+
+
 </div>
 
 
