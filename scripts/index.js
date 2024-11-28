@@ -68,6 +68,9 @@ const setupUI = (user) => {
         .catch((error) => {
           console.error('Error al guardar los datos históricos:', error);
         });
+
+      // Guarda el valor de la temperatura globalmente o en localStorage para compartirlo con otros scripts
+      window.currentTemperature = tempValue;  // Puedes usar esta variable global  
     });
   } else {
     // Mostrar login
@@ -77,4 +80,7 @@ const setupUI = (user) => {
     userDetailsElement.style.display = 'none';
     contentElement.style.display = 'none';
   }
+
+
+
 };
