@@ -10,7 +10,7 @@ function drawChart() {
   ]);
 
   var options = {
-    width: 600, height: 220,
+    width: 600, height: 400,
     redFrom: 70, redTo: 100,
     yellowFrom: 40, yellowTo: 70,
     minorTicks: 5

@@ -1,9 +1,177 @@
 html {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   text-align: center;
+  scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+  color: #2d3436;
+  line-height: 1.6;
+}
 
+.topnav {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  background: transparent;
+}
+
+.reading {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2d3436;
+  margin: 1rem 0;
+  text-shadow: none;
+  animation: none;
+}
+
+#login-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+button, #login-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: auto;
+  min-width: 120px;
+}
+
+button:hover, #login-button:hover {
+  background: #357abd;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0 1rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74,144,226,0.2);
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  color: #2d3436;
+  font-weight: 500;
+}
+
+.form-elements-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .reading {
+    font-size: 2rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+}
+
+/* Switch styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 1rem 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4a90e2;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
 
 /* Contenedor principal */
 .login-container {
@@ -42,7 +210,6 @@ html {
   /* Limita el tamaño en pantallas grandes */
 }
 
-
 #login-button {
   width: 50%;
   /* Mantiene el tamaño del botón */
@@ -66,7 +233,6 @@ html {
   background: #355d7a;
   /* Cambia el color de fondo al pasar el mouse */
 }
-
 
 /* Responsivo */
 @media (max-width: 768px) {
@@ -94,9 +260,6 @@ body {
   /* Asegura que cubra toda la ventana del navegador */
   width: 100%;
 }
-
-
-
 
 .topnav {
   overflow: hidden;
@@ -144,8 +307,6 @@ body {
   /* Optional padding for the container */
 }
 
-
-
 .reading {
 
   font-size: 4rem;
@@ -170,14 +331,12 @@ body {
 
 }
 
-
 .form-elements-container {
   display: flex;
   flex-direction: column;
   width: 300px;
   margin: 0 auto;
 }
-
 
 label {
   margin-bottom: 5px;
@@ -191,8 +350,6 @@ input {
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
-
-
 
 button {
   padding: 10px;
@@ -235,13 +392,10 @@ button:hover {
 
 /*.chart-container {width: 90%;height: 400px; }*/
 
-
 .chart-container {
   width: 100%;
   height: 70vh;
 }
-
-
 
 .switch {
   position: relative;
@@ -341,11 +495,6 @@ input:checked+.slider:before {
   cursor: pointer;
 }
 
-
-
-
-
-
 .highcharts-figure,
 .highcharts-data-table table {
   min-width: 310px;
@@ -391,4 +540,175 @@ input:checked+.slider:before {
 
 .highcharts-description {
   margin: 0.3rem 10px;
+}
+
+/* Estilos para la barra de autenticación */
+.auth-bar {
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.auth-bar p {
+  margin: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#user-details {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+#logout-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  transition: background 0.3s ease;
+}
+
+#logout-link:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* Estilos para las cards y gráficos */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Estilo para el indicador circular */
+.chart-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+#chart_div {
+  grid-column: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+#chart_div table {
+  margin: 0 auto;
+  transform: scale(1.2);
+}
+
+/* Media query para móviles */
+@media (max-width: 768px) {
+  .chart-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  #chart_div {
+    grid-column: 1;
+    min-height: 300px;
+  }
+
+  #chart_div table {
+    transform: scale(0.9);
+  }
+}
+
+/* Contenedor de botones */
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 800px;
+}
+
+.buttons-container button {
+  background: #2193b0;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.buttons-container button:hover {
+  background: #6dd5ed;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .auth-bar p {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  #chart_div {
+    height: 180px;
+  }
+  
+  .cards {
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+  
+  .reading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttons-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .buttons-container button {
+    width: 100%;
+  }
+  
+  #chart_div {
+    height: 150px;
+  }
+}
+
+/* Mejoras para el gráfico de temperatura */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  margin: 1rem 0;
+}
+
+.fas {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }

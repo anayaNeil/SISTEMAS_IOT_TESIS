@@ -11,19 +11,15 @@
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
 
-
-
   <!-- jsPDF Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <!-- Highcharts Exporting Module -->
-
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-more.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 
   <script>
     // REPLACE WITH YOUR web app's Firebase configuration
@@ -38,7 +34,6 @@
       measurementId: "G-V9N31Q7YHS"
     };
 
-
     // Initialize firebase
     firebase.initializeApp(firebaseConfig);
     // Make auth and database references
@@ -52,9 +47,6 @@
 </head>
 
 <body>
-
-
-
 
   <!-- Contenedor principal del Login -->
   <div class="login-container" id="login-container">
@@ -82,58 +74,74 @@
         </div>
       </div>
     </form>
-
-
   </div>
-
 
   <!-- Barra de autenticación -->
   <div id="authentication-bar" class="auth-bar" style="display: none;">
     <p>
       <span id="authentication-status">Usuario logueado</span>
       <span id="user-details">USEREMAIL</span>
-      <a href="#" id="logout-link">(logout)</a>
+      <a href="#" id="logout-link">Cerrar sesión</a>
     </p>
   </div>
 
   <!-- Contenido principal -->
   <div class="content-sign-in" id="content-sign-in" style="display: none;">
+    <!-- Temperatura -->
     <div class="cards">
-      <!-- Temperatura -->
       <div class="card">
-        <p><i class="fas fa-thermometer-half" style="color:#e72b3b;"></i> TEMPERATURA</p>
-        <p><span class="reading"><span id="temp"></span> °C</span></p>
+        <p>
+          <i class="fas fa-thermometer-half" style="color:#e72b3b;"></i>
+          <span>TEMPERATURA</span>
+        </p>
+        <p>
+          <span class="reading">
+            <span id="temp"></span> °C
+          </span>
+        </p>
       </div>
     </div>
 
 
-    <!-- indicador circular -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <div id="chart_div" style="width: 600px; height: 220px;"></div>
-
-
-    <!-- grafico lineal  -->
+    <!-- Indicador circular -->
     <div class="cards">
       <div class="card">
-        <p><i class="fas fa-thermometer-half" style="color:#059e8a;"></i> Historial</p>
+        <p>
+          <i class="fas fa-chart-pie" style="color:#059e8a;"></i>
+          <span>Indicador en Tiempo Real</span>
+        </p>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div class="chart-wrapper">
+          <div id="chart_div"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Gráfico lineal -->
+    <div class="cards">
+      <div class="card">
+        <p>
+          <i class="fas fa-thermometer-half" style="color:#059e8a;"></i>
+          <span>Historial</span>
+        </p>
         <div id="chart-temperature" class="chart-container"></div>
       </div>
     </div>
 
-
-    <!-- Botones centrados -->
+    <!-- Botones -->
     <div class="buttons-container">
-      <button id="generate-report" onclick="generateReport()">Mostrar Historial</button>
-      <button onclick="window.open('scripts/manual.html', '_blank')">Abrir Manual</button>
+      <button id="generate-report" onclick="generateReport()">
+        <i class="fas fa-history"></i>
+        Historial
+      </button>
+      <button onclick="window.open('scripts/manual.html', '_blank')">
+        <i class="fas fa-book"></i>
+        Manual
+      </button>
     </div>
   </div>
-  </div>
 
-
-
-  </div>
-
-  </div>
   <script src="scripts/auth.js"></script>
   <script src="scripts/index.js"></script>
   <script src="scripts/indicador-definitions.js"></script>
