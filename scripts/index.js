@@ -26,8 +26,8 @@ const setupUI = (user) => {
     var uid = user.uid;
 
     // Configuración de Firebase
-    var dbPathTemp = 'UsersData/' + uid.toString() + '/temperature';
-    var dbPathOllaState = 'UsersData/' + uid.toString() + '/ollaState';
+    var dbPathTemp = 'public_data/sensor_readings/temperature';
+    var dbPathOllaState = 'public_data/sensor_readings/olla_state';
 
     var dbRefTemp = firebase.database().ref().child(dbPathTemp);
     var dbRefOllaState = firebase.database().ref().child(dbPathOllaState);
@@ -51,8 +51,7 @@ const setupUI = (user) => {
         chartT.series[0].addPoint([x, y], true, false, true);
       }
 
-      let historicalDataPath =
-        'UsersData/' + uid.toString() + '/temperatureHistory';
+      let historicalDataPath = 'public_data/sensor_readings/temperatureHistory';
       let dbRefHistoricalData = firebase.database().ref().child(historicalDataPath);
 
       let dataEntry = {
@@ -80,7 +79,5 @@ const setupUI = (user) => {
     userDetailsElement.style.display = 'none';
     contentElement.style.display = 'none';
   }
-
-
 
 };
