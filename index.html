@@ -42,7 +42,7 @@
   </script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="/imagenes/favicon.png">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -55,23 +55,37 @@
 
     <!-- Formulario de login -->
     <form id="login-form">
-      <div class="form-elements-container">
-        <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="email" placeholder="Usuario" id="input-email" required>
-        </div>
-        <div class="input-group">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="Contraseña" id="input-password" required>
-        </div>
-
-        <button type="submit" id="login-button">Login</button>
-
-        <!-- Mensaje de error (Ocultado inicialmente) -->
-        <div id="error-message" class="error-message" style="display: none;">
-          <span class="error-icon">❌</span>
-          <span class="error-text">Los datos de esta cuenta son incorrectos</span>
-        </div>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="email" placeholder="Usuario" id="input-email" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="Contraseña" id="input-password" required>
+      </div>
+      
+      <button type="submit" id="login-button">Login</button>
+      
+      <!-- Separador -->
+      <div class="separator">
+        <span>o</span>
+      </div>
+      
+      <!-- Botón de Google -->
+      <button type="button" id="google-login" class="google-btn">
+        <i class="fab fa-google" style="margin-right: 10px;"></i>
+        Iniciar sesión con Google
+      </button>
+      
+      <!-- Enlace de contraseña olvidada -->
+      <div class="forgot-password">
+        <a href="#" id="forgot-password">¿Has olvidado la contraseña?</a>
+      </div>
+      
+      <!-- Mensaje de error (Ocultado inicialmente) -->
+      <div id="error-message" class="error-message" style="display: none;">
+        <span class="error-icon">❌</span>
+        <span class="error-text">Los datos de esta cuenta son incorrectos</span>
       </div>
     </form>
   </div>
