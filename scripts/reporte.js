@@ -1,5 +1,5 @@
 function generateReport() {
-  var dbRefHistoricalData = firebase.database().ref().child('UsersData/' + firebase.auth().currentUser.uid + '/temperatureHistory');
+  var dbRefHistoricalData = firebase.database().ref('public_data/sensor_readings/temperatureHistory');
 
   dbRefHistoricalData.once('value', snapshot => {
     let data = [];
@@ -21,5 +21,3 @@ function generateReport() {
     console.error('Error al generar el reporte:', error);
   });
 }
-
-
