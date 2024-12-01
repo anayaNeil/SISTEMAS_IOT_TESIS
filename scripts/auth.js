@@ -27,40 +27,100 @@ function showAuthenticatedUI(user) {
   document.querySelector('#authentication-status').textContent = 'Usuario logueado';  // Actualiza el texto de estado
 }
 
-// Login
+// Elementos del DOM
 const loginForm = document.querySelector('#login-form');
+const logoutButton = document.querySelector('#logout-link');
+const googleButton = document.querySelector('#google-login');
+const forgotPassword = document.querySelector('#forgot-password');
+
+// Login con email y contraseña
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const email = loginForm['input-email'].value;
-  const password = loginForm['input-password'].value;
-
-  auth.signInWithEmailAndPassword(email, password).then((cred) => {
-      loginForm.reset();  // Resetear el formulario después de un login exitoso
-      console.log('Usuario logueado: ' + email);
-      document.getElementById("error-message").style.display = 'none'; // Ocultar mensaje de error si el login fue exitoso
-  })
-  .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-
-      // Validar si el error es debido a credenciales incorrectas (código 400)
-      if (errorCode === 'auth/invalid-email' || errorCode === 'auth/wrong-password' || errorMessage.includes("INVALID_LOGIN_CREDENTIALS")) {
-          document.getElementById("error-message").innerHTML = "<span class='error-icon'>❌</span><span class='error-text'>Los datos de esta cuenta son incorrectos</span>";
-          document.getElementById("error-message").style.display = 'block'; // Mostrar mensaje de error
-      } else {
-          // Para otros errores mostrar el mensaje genérico
-          document.getElementById("error-message").innerHTML = "<span class='error-icon'>❌</span><span class='error-text'>Error en el inicio de sesión: " + errorMessage + "</span>";
-          document.getElementById("error-message").style.display = 'block'; // Mostrar mensaje de error
-      }
-      console.log(errorMessage);
+  
+  const email = document.querySelector('#input-email').value;
+  const password = document.querySelector('#input-password').value;
+  
+  auth.signInWithEmailAndPassword(email, password).then(() => {
+    loginForm.reset();
+    document.getElementById('error-message').style.display = 'none';
+  }).catch(err => {
+    document.getElementById('error-message').style.display = 'block';
   });
 });
 
-// Logout
-const logout = document.querySelector('#logout-link');
-logout.addEventListener('click', (e) => {
+// Login con Google
+googleButton.addEventListener('click', (e) => {
   e.preventDefault();
-  auth.signOut().then(() => {
-      showLoginForm(); // Muestra el formulario de login después de cerrar sesión
-  });
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  
+  firebase.auth()
+    .signInWithPopup(provider)
+    .then((result) => {
+      // Usuario logueado exitosamente
+      console.log('Google login successful');
+      loginForm.reset();
+      document.getElementById('error-message').style.display = 'none';
+    })
+    .catch((error) => {
+      // Manejar errores
+      console.error("Error completo:", error);
+      document.getElementById('error-message').style.display = 'block';
+      document.getElementById('error-message').innerHTML = 
+        `<span class='error-icon'>❌</span><span class='error-text'>Error: ${error.message}</span>`;
+    });
+});
+
+// Recuperar contraseña
+forgotPassword.addEventListener('click', (e) => {
+  e.preventDefault();
+  const email = document.querySelector('#input-email').value;
+  
+  if (email) {
+    auth.sendPasswordResetEmail(email)
+      .then(() => {
+        alert('Se ha enviado un correo para restablecer tu contraseña');
+      })
+      .catch(error => {
+        alert('Error al enviar el correo. Verifica tu dirección de email.');
+      });
+  } else {
+    alert('Por favor, ingresa tu correo electrónico');
+  }
+});
+
+// Logout
+logoutButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  auth.signOut();
+});
+
+// Monitor de estado de autenticación
+auth.onAuthStateChanged(user => {
+  if (user) {
+    console.log('Usuario autenticado:', user.email);
+    loginForm.closest('.login-container').style.display = 'none';
+    document.querySelector('.content-sign-in').style.display = 'block';
+    document.querySelector('#authentication-bar').style.display = 'block';
+    document.querySelector('#user-details').textContent = user.email;
+    
+    // Asegurarse de que los gráficos se inicialicen
+    if (typeof initChartsAndIndicators === 'function') {
+      console.log('Inicializando gráficos...');
+      initChartsAndIndicators();
+    }
+    
+    // Iniciar la actualización de datos
+    if (typeof updateChartsAndIndicators === 'function') {
+      console.log('Iniciando actualización de datos...');
+      updateChartsAndIndicators();
+    }
+  }
+  else {
+    console.log('Usuario no autenticado');
+    loginForm.closest('.login-container').style.display = 'flex';
+    document.querySelector('.content-sign-in').style.display = 'none';
+    document.querySelector('#authentication-bar').style.display = 'none';
+  }
 });
