@@ -51,24 +51,37 @@ loginForm.addEventListener('submit', (e) => {
 // Login con Google
 googleButton.addEventListener('click', (e) => {
   e.preventDefault();
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('email');
   
-  firebase.auth()
-    .signInWithPopup(provider)
+  const provider = new firebase.auth.GoogleAuthProvider();
+  
+  auth.signInWithPopup(provider)
     .then((result) => {
       // Usuario logueado exitosamente
-      console.log('Google login successful');
-      loginForm.reset();
+      console.log('Login con Google exitoso:', result.user.email);
       document.getElementById('error-message').style.display = 'none';
+      
+      // Mostrar elementos principales
+      loginForm.closest('.login-container').style.display = 'none';
+      document.querySelector('.content-sign-in').style.display = 'block';
+      document.querySelector('#authentication-bar').style.display = 'block';
+      document.querySelector('#user-details').textContent = result.user.email;
     })
     .catch((error) => {
-      // Manejar errores
-      console.error("Error completo:", error);
+      console.error("Error en login con Google:", error);
       document.getElementById('error-message').style.display = 'block';
+      
+      // Personalizar mensaje de error según el código
+      let errorMessage = 'Error al iniciar sesión con Google';
+      if (error.code === 'auth/popup-blocked') {
+        errorMessage = 'El popup fue bloqueado. Por favor, permite ventanas emergentes.';
+      } else if (error.code === 'auth/popup-closed-by-user') {
+        errorMessage = 'El proceso de login fue cancelado.';
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        errorMessage = 'La solicitud de login fue cancelada.';
+      }
+      
       document.getElementById('error-message').innerHTML = 
-        `<span class='error-icon'>❌</span><span class='error-text'>Error: ${error.message}</span>`;
+        `<span class='error-icon'>❌</span><span class='error-text'>${errorMessage}</span>`;
     });
 });
 
