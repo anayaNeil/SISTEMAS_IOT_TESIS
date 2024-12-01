@@ -2,6 +2,8 @@ html {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   text-align: center;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -11,6 +13,9 @@ body {
   min-height: 100vh;
   color: #2d3436;
   line-height: 1.6;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .topnav {
@@ -586,6 +591,8 @@ input:checked+.slider:before {
   padding: 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .card {
@@ -594,6 +601,8 @@ input:checked+.slider:before {
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Estilo para el indicador circular */
@@ -711,4 +720,13 @@ input:checked+.slider:before {
 .fas {
   font-size: 1.5rem;
   margin-right: 0.5rem;
+}
+
+.content-sign-in {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
