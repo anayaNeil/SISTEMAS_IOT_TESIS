@@ -21,8 +21,8 @@ body {
 /* Estilo de las secciones */
 
 .section {
-  margin-bottom: 20px; /* Espacio entre secciones */
-  padding: 15px; /* Espacio interno en cada sección */
+  margin-bottom: 10px; /* Espacio entre secciones */
+  padding: 5px; /* Espacio interno en cada sección */
   background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad, permitiendo ver el fondo */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra muy suave */
@@ -41,6 +41,7 @@ body {
 footer {
   text-align: center; /* Centra el contenido del pie de página */
   margin-top: 20px; /* Espacio superior */
+  margin-bottom: 20px; /* Espacio superior */
 }
 
 footer button {
@@ -62,16 +63,15 @@ footer button:hover {
 /* Hero video responsive */
 .hero-video {
   width: 100%;
-  height: auto;
-  object-fit: cover; /* Asegura que el video ocupe todo el ancho y altura del contenedor */
+  margin-bottom: 1rem;
+  background: #000;
 }
 
 .hero-video video {
   width: 100%;
-  height: auto; /* Ajusta la altura automáticamente para mantener la proporción */
-  object-fit: cover; /* Asegura que el video ocupe todo el ancho y altura del contenedor */
+  height: auto;
+  display: block;
 }
-
 
 /* El estilo del contenedor del video (sección que contiene el video) */
 .video-container {
@@ -87,4 +87,169 @@ footer button:hover {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+  padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  width: 100%;
+  padding: 5px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.description-container {
+  padding: 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description-container h3 {
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 1.3em;
+}
+
+.description-container p {
+  line-height: 1.4;
+  color: #666;
+  margin: 0;
+}
+
+/* Estilos para los pasos del proceso */
+.process-steps {
+  padding: 10px 0;
+}
+
+.process-steps h4 {
+  color: #2c3e50;
+  margin: 15px 0 8px 0;
+  font-size: 1.1em;
+}
+
+.process-steps ul {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.process-steps .sub-list {
+  list-style-type: circle;
+  margin: 5px 0 5px 20px;
+}
+
+.process-steps li {
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
+
+/* Ajuste para móviles */
+@media screen and (max-width: 768px) {
+  .process-steps h4 {
+    font-size: 1em;
+    margin: 10px 0 5px 0;
+  }
+
+  .process-steps ul {
+    padding-left: 15px;
+  }
+
+  .process-steps .sub-list {
+    margin: 3px 0 3px 15px;
+  }
+
+  .process-steps li {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+  }
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+  .content-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+  }
+
+  .image-container {
+    width: 100%;
+    padding: 2px;
+  }
+
+  .description-container {
+    width: 100%;
+    padding: 10px 5px;
+  }
+
+  .description-container h3 {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+
+  .description-container p {
+    font-size: 0.9em;
+    line-height: 1.3;
+  }
+
+  .hero-video {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+  .content-grid {
+    gap: 5px;
+    padding: 3px;
+  }
+
+  .image-container {
+    padding: 1px;
+  }
+
+  .description-container {
+    padding: 8px 3px;
+  }
+
+  .description-container h3 {
+    font-size: 1em;
+    margin-bottom: 3px;
+  }
+
+  .description-container p {
+    font-size: 0.85em;
+    line-height: 1.2;
+  }
 }

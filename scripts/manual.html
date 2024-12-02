@@ -4,8 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
   <title>Manual del Sistema</title>
   <link rel="stylesheet" href="manual.css">
 </head>
@@ -17,49 +15,203 @@
       <source src="/videos/El proceso de la cerveza.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>
-
   </div>
 
-
-  <!-- Contenido de la página -->
-  <div class="container">
-    <div class="section">
-      <p>
-        Convierte tu experiencia en una fuente de ingresos pasivos. Ofrece acceso exclusivo a contenido solo para
-        miembros, crea un curso online y coloca tus contenidos detrás de un paywall.
-        Convierte tu experiencia en una fuente de ingresos pasivos. Ofrece acceso exclusivo a contenido solo para
-        miembros, crea un curso online y coloca tus contenidos detrás de un paywall.
-      </p>
+  <!-- Contenido en dos columnas -->
+  <div class="content-grid">
+    <!-- Primera fila: Imagen izquierda, Texto derecha -->
+    <div class="description-container">
+      <h3>Descripción de Sistema Electrico IOT</h3>
+      <p>1. Interruptor On/Off</p>
+      <p>2. Indicador Led de advertencia</p>
+      <p>3. Pantalla Oled</p>
+      <p>4. Boton selector de OLLAS</p>
+      <p>5. Bocina de Alarma</p>
+      <p>6. Sensor de Temperatura</p>
+      <p>7. Alimentación 5 Voltios</p>
     </div>
-
-    <div class="section">
-      <!-- Primera imagen que reemplaza el video -->
-      <img alt="Imagen de proceso de elaboración de cerveza" src="/iot_unia_neilA.webp" />
-    </div>
-
-
-    <div class="section">
-      <h2>Recibe pagos con las facturas</h2>
-      <p>
-        La manera más sencilla de recibir pagos para que puedas concentrarte en entregar los proyectos y en el
-        crecimiento de tu negocio.
-      </p>
+    <div class="image-container">
+      <img src="/imagenes/EQUIPO_ESP32.JPG" alt="Equipo ESP32">
     </div>
 
 
-    <div class="section">
-      <!-- Segunda imagen -->
-      <img alt="Imagen adicional relacionada con el proceso" src="/iot_unia_neilA.webp" />
+    <!-- Segunda fila: Texto izquierda, Imagen derecha -->
+
+    <div class="image-container">
+      <img src="/imagenes/ollas.JPG" alt="Sistema de Control">
+    </div>
+    <div class="description-container">
+      <h3>Etapas en proceso de cerveza</h3>
+      <p>El sistema consta de tres ollas escalonadas diseñadas para procesar cerveza en diferentes
+        etapas del proceso, cada una trabajando a una temperatura específica o dentro de un rango.
+        Las ollas están conectadas mediante válvulas que permiten transferir el contenido entre ellas de manera
+        controlada.</p>
+    </div>
+
+    <!-- Tercera fila: Imagen izquierda, Texto derecha -->
+
+    <div class="description-container">
+      <h3>Olla 1</h3>
+      <div class="process-steps">
+        <h4>Precalentado</h4>
+        <ul>
+          <li>Estado inicial: Por defecto, el sistema está configurado en "OLLA 1".</li>
+        </ul>
+
+        <h4>Preparación:</h4>
+        <ul>
+          <li>Introducir el sensor de temperatura (parte metálica sumergida a unos 15 cm).</li>
+          <li>Calentar el agua hasta alcanzar 75°C.</li>
+        </ul>
+
+        <h4>Propósito:</h4>
+        <ul>
+          <li>Este paso prepara el agua para que, al mezclarse en la Olla 2 con la malta, la temperatura baje a un
+            promedio de 67°C.</li>
+        </ul>
+
+        <h4>Acciones automáticas:</h4>
+        <ul>
+          <li>Al alcanzar los 75°C, el sistema:</li>
+          <ul class="sub-list">
+            <li>Emite una alerta sonora durante 6 segundos.</li>
+            <li>Enciende el LED rojo como indicador.</li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
+    </div>
+
+    <!-- Cuarta fila: Texto izquierda, Imagen derecha -->
+    <div class="image-container">
+      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
     </div>
 
 
+    <div class="description-container">
+      <h3>Olla 2</h3>
+      <div class="process-steps">
+        <h4>Proceso de Macerado</h4>
+        <ul>
+          <li>Estado inicial: Seleccionar "OLLA 2" en el sistema presionando el botón selector.</li>
+        </ul>
+
+        <h4>Preparación:</h4>
+        <ul>
+          <li>Retirar el sensor de temperatura de la Olla 1 y colocarlo en la Olla 2 a la misma profundidad.</li>
+          <li>Agregar la malta al agua siguiendo la proporción 3:1 agua/malta.</li>
+        </ul>
+
+        <h4>Proceso:</h4>
+        <ul>
+          <li>Mantener la temperatura entre 65°C y 70°C durante 60 minutos.</li>
+          <li>Si la temperatura se desvía del rango (supera los 70°C o cae por debajo de los 65°C), se debe:</li>
+          <ul class="sub-list">
+            <li>Ajustar mediante calentamiento (prender el fuego) o enfriamiento (por agitación).</li>
+          </ul>
+        </ul>
+
+        <h4>Acciones automáticas:</h4>
+        <ul>
+          <li>Notificación de alerta sonora y activación del LED indicador si la temperatura sale del rango establecido.
+          </li>
+        </ul>
+
+        <h4>Propósito:</h4>
+        <ul>
+          <li>Este paso extrae los azúcares de la malta, preparando el mosto para la siguiente etapa.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Quinta fila: Imagen izquierda, Texto derecha -->
+    <div class="description-container">
+      <h3>Olla 3</h3>
+      <div class="process-steps">
+        <h4>Ebullición y Enfriado</h4>
+        <ul>
+          <li>Estado inicial: Seleccionar "OLLA 3" en el sistema presionando el botón selector.</li>
+        </ul>
+
+        <h4>Preparación:</h4>
+        <ul>
+          <li>Retirar el sensor de temperatura de la Olla 2 y colocarlo en la Olla 3 a la misma profundidad.</li>
+        </ul>
+
+        <h4>Proceso:</h4>
+        <ul>
+          <li>Ebullición:</li>
+          <ul class="sub-list">
+            <li>Elevar la temperatura hasta el punto de ebullición y mantenerla durante 60 minutos.</li>
+          </ul>
+        </ul>
+        <li>Enfriado:</li>
+        <ul class="sub-list">
+          <li>Reducir la temperatura rápidamente hasta 30°C.</li>
+        </ul>
+        </ul>
+
+        <h4>Propósito:</h4>
+        <ul>
+          <li>Preparar el mosto para la adición de levaduras y prevenir contaminación.</li>
+        </ul>
+
+        <h4>Acciones automáticas:</h4>
+        <ul>
+          <li>Notificación de alerta cuando la temperatura descienda hasta los 30°C.</li>
+          <li>Acción manual: Agregar las levaduras para continuar con el proceso de fermentación.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
+    </div>
+
+    <!-- Sexta fila: Texto izquierda, Imagen derecha -->
+
+    <div class="image-container">
+      <img src="/imagenes/HISTORIAL.JPG" alt="Sensores del Sistema">
+    </div>
+
+    <div class="description-container">
+      <h3>Descargar Historial</h3>
+      <div class="process-steps">
+        <h4>Características de la función</h4>
+        <ul>
+          <li>La función Descargar Historial permite obtener un registro completo de las temperaturas recopiladas a lo
+            largo de todo el proceso de elaboración de la cerveza.</li>
+        </ul>
+
+        <h4>Formatos de descarga:</h4>
+        <ul>
+          <li>Gráficos:</li>
+          <ul class="sub-list">
+            <li>PNG, JPEG, SVG.</li>
+          </ul>
+          <li>Datos:</li>
+          <ul class="sub-list">
+            <li>CSV, XLS.</li>
+          </ul>
+        </ul>
+
+        <h4>Procedimiento de descarga:</h4>
+        <ul>
+          <li>Ubicar el botón de tres barras localizado en la esquina superior derecha del gráfico de temperatura.</li>
+          <li>Al hacer clic en este botón, se despliega un menú con las opciones de exportación disponibles.</li>
+          <li>Seleccionar el formato deseado (imagen o datos).</li>
+          <li>La descarga se iniciará automáticamente.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <footer>
     <button id="close-tab-btn">Cerrar Manual</button>
   </footer>
-
-
 
   <script src="manual.js"></script>
 </body>
