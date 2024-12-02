@@ -6,214 +6,345 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manual del Sistema</title>
   <link rel="stylesheet" href="manual.css">
+  <style>
+    .manual-container {
+      overflow-x: auto;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      flex-direction: row;
+      min-width: min-content;
+      /* Asegura que el contenido no se comprima */
+    }
+
+    .scroll-section {
+      margin: 10px;
+      min-width: 100vw;
+      scroll-snap-align: start;
+    }
+
+    .content-section {
+      display: flex;
+      gap: 10px;
+      /* Reduce el espacio entre contenedores */
+      padding: 0 10px;
+    }
+
+    .description-container {
+      margin: 5px;
+      flex: 1;
+      overflow-y: auto;
+      touch-action: pan-y pinch-zoom;
+      /* Permite solo scroll vertical en móviles */
+    }
+
+
+    /* Estilo para el botón de salir */
+    #close-tab-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #close-tab-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .image-container {
+      margin: 5px;
+      flex-shrink: 0;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      border: none;
+      padding: 10px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .nav-left {
+      left: 0;
+    }
+
+    .nav-right {
+      right: 0;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Sección de video al inicio -->
-  <div class="hero-video">
-    <video autoplay loop playsinline>
-      <source src="/videos/El proceso de la cerveza.mp4" type="video/mp4">
-      Tu navegador no soporta el elemento de video.
-    </video>
+  <div class="manual-container">
+    <div class="horizontal-scroll">
+      <!-- Sección 1: Video -->
+      <section class="scroll-section video-section" id="section-1">
+        <div class="hero-video">
+          <video autoplay loop playsinline>
+            <source src="/videos/El proceso de la cerveza.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <button class="nav-button nav-right" onclick="nextSection(1)"><i></i></button>
+      </section>
+
+      <!-- Sección 2: Primera fila -->
+      <section class="scroll-section" id="section-2">
+        <button class="nav-button nav-left" onclick="prevSection(2)"><i></i></button>
+        <button class="nav-button nav-right" onclick="nextSection(2)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/EQUIPO_ESP32.JPG" alt="Equipo ESP32">
+          </div>
+          <div class="description-container">
+            <h3>Descripción de Sistema Electrico IOT</h3>
+            <p>1. Interruptor On/Off</p>
+            <p>2. Indicador Led de advertencia</p>
+            <p>3. Pantalla Oled</p>
+            <p>4. Boton selector de OLLAS</p>
+            <p>5. Bocina de Alarma</p>
+            <p>6. Sensor de Temperatura</p>
+            <p>7. Alimentación 5 Voltios</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 3: Segunda fila -->
+      <section class="scroll-section" id="section-3">
+        <button class="nav-button nav-left" onclick="prevSection(3)"><i></i></button>
+        <button class="nav-button nav-right" onclick="nextSection(3)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/ollas.JPG" alt="Sistema de Control">
+          </div>
+          <div class="description-container">
+            <h3>Etapas en proceso de cerveza</h3>
+            <p>El sistema consta de tres ollas escalonadas diseñadas para procesar cerveza en diferentes
+              etapas del proceso, cada una trabajando a una temperatura específica o dentro de un rango.
+              Las ollas están conectadas mediante válvulas que permiten transferir el contenido entre ellas de manera
+              controlada.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 4: Tercera fila -->
+      <section class="scroll-section" id="section-4">
+        <button class="nav-button nav-left" onclick="prevSection(4)"><i></i></button>
+        <button class="nav-button nav-right" onclick="nextSection(4)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
+          </div>
+          <div class="description-container">
+            <h3>Olla 1</h3>
+            <div class="process-steps">
+              <h4>Precalentado</h4>
+              <ul>
+                <li>Estado inicial: Por defecto, el sistema está configurado en "OLLA 1".</li>
+              </ul>
+
+              <h4>Preparación:</h4>
+              <ul>
+                <li>Introducir el sensor de temperatura (parte metálica sumergida a unos 15 cm).</li>
+                <li>Calentar el agua hasta alcanzar 75°C.</li>
+              </ul>
+
+              <h4>Propósito:</h4>
+              <ul>
+                <li>Este paso prepara el agua para que, al mezclarse en la Olla 2 con la malta, la temperatura baje a un
+                  promedio de 67°C.</li>
+              </ul>
+
+              <h4>Acciones automáticas:</h4>
+              <ul>
+                <li>Al alcanzar los 75°C, el sistema:</li>
+                <ul class="sub-list">
+                  <li>Emite una alerta sonora durante 6 segundos.</li>
+                  <li>Enciende el LED rojo como indicador.</li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Sección 5: Cuarta fila -->
+      <section class="scroll-section" id="section-5">
+        <button class="nav-button nav-left" onclick="prevSection(5)"><i></i></button>
+        <button class="nav-button nav-right" onclick="nextSection(5)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
+          </div>
+          <div class="description-container">
+            <h3>Olla 2</h3>
+            <div class="process-steps">
+              <h4>Proceso de Macerado</h4>
+              <ul>
+                <li>Estado inicial: Seleccionar "OLLA 2" en el sistema presionando el botón selector.</li>
+              </ul>
+
+              <h4>Preparación:</h4>
+              <ul>
+                <li>Retirar el sensor de temperatura de la Olla 1 y colocarlo en la Olla 2 a la misma profundidad.</li>
+                <li>Agregar la malta al agua siguiendo la proporción 3:1 agua/malta.</li>
+              </ul>
+
+              <h4>Proceso:</h4>
+              <ul>
+                <li>Mantener la temperatura entre 65°C y 70°C durante 60 minutos.</li>
+                <li>Si la temperatura se desvía del rango (supera los 70°C o cae por debajo de los 65°C), se debe:</li>
+                <ul class="sub-list">
+                  <li>Ajustar mediante calentamiento (prender el fuego) o enfriamiento (por agitación).</li>
+                </ul>
+              </ul>
+
+              <h4>Acciones automáticas:</h4>
+              <ul>
+                <li>Notificación de alerta sonora y activación del LED indicador si la temperatura sale del rango
+                  establecido.
+                </li>
+              </ul>
+
+              <h4>Propósito:</h4>
+              <ul>
+                <li>Este paso extrae los azúcares de la malta, preparando el mosto para la siguiente etapa.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 6: Quinta fila -->
+      <section class="scroll-section" id="section-6">
+        <button class="nav-button nav-left" onclick="prevSection(6)"><i></i></button>
+        <button class="nav-button nav-right" onclick="nextSection(6)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
+          </div>
+          <div class="description-container">
+            <h3>Olla 3</h3>
+            <div class="process-steps">
+              <h4>Ebullición y Enfriado</h4>
+              <ul>
+                <li>Estado inicial: Seleccionar "OLLA 3" en el sistema presionando el botón selector.</li>
+              </ul>
+
+              <h4>Preparación:</h4>
+              <ul>
+                <li>Retirar el sensor de temperatura de la Olla 2 y colocarlo en la Olla 3 a la misma profundidad.</li>
+              </ul>
+
+              <h4>Proceso:</h4>
+              <ul>
+                <li>Ebullición:</li>
+                <ul class="sub-list">
+                  <li>Elevar la temperatura hasta el punto de ebullición y mantenerla durante 60 minutos.</li>
+                </ul>
+              </ul>
+              <li>Enfriado:</li>
+              <ul class="sub-list">
+                <li>Reducir la temperatura rápidamente hasta 30°C.</li>
+              </ul>
+              </ul>
+
+              <h4>Propósito:</h4>
+              <ul>
+                <li>Preparar el mosto para la adición de levaduras y prevenir contaminación.</li>
+              </ul>
+
+              <h4>Acciones automáticas:</h4>
+              <ul>
+                <li>Notificación de alerta cuando la temperatura descienda hasta los 30°C.</li>
+                <li>Acción manual: Agregar las levaduras para continuar con el proceso de fermentación.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Sección 7: Sexta fila -->
+      <section class="scroll-section" id="section-7">
+        <button class="nav-button nav-left" onclick="prevSection(7)"><i></i></button>
+        <div class="content-section">
+          <div class="image-container">
+            <img src="/imagenes/HISTORIAL.JPG" alt="Sensores del Sistema">
+          </div>
+          <div class="description-container">
+            <h3>Descargar Historial</h3>
+            <div class="process-steps">
+              <h4>Características de la función</h4>
+              <ul>
+                <li>La función Descargar Historial permite obtener un registro completo de las temperaturas recopiladas
+                  a lo
+                  largo de todo el proceso de elaboración de la cerveza.</li>
+              </ul>
+
+              <h4>Formatos de descarga:</h4>
+              <ul>
+                <li>Gráficos:</li>
+                <ul class="sub-list">
+                  <li>PNG, JPEG, SVG.</li>
+                </ul>
+                <li>Datos:</li>
+                <ul class="sub-list">
+                  <li>CSV, XLS.</li>
+                </ul>
+              </ul>
+
+              <h4>Procedimiento de descarga:</h4>
+              <ul>
+                <li>Ubicar el botón de tres barras localizado en la esquina superior derecha del gráfico de temperatura.
+                </li>
+                <li>Al hacer clic en este botón, se despliega un menú con las opciones de exportación disponibles.</li>
+                <li>Seleccionar el formato deseado (imagen o datos).</li>
+                <li>La descarga se iniciará automáticamente.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
 
-  <!-- Contenido en dos columnas -->
-  <div class="content-grid">
-    <!-- Primera fila: Imagen izquierda, Texto derecha -->
-    <div class="description-container">
-      <h3>Descripción de Sistema Electrico IOT</h3>
-      <p>1. Interruptor On/Off</p>
-      <p>2. Indicador Led de advertencia</p>
-      <p>3. Pantalla Oled</p>
-      <p>4. Boton selector de OLLAS</p>
-      <p>5. Bocina de Alarma</p>
-      <p>6. Sensor de Temperatura</p>
-      <p>7. Alimentación 5 Voltios</p>
-    </div>
-    <div class="image-container">
-      <img src="/imagenes/EQUIPO_ESP32.JPG" alt="Equipo ESP32">
-    </div>
+  <button id="close-tab-btn">SALIR</button>
 
+  <script>
+    function nextSection(currentSection) {
+      const nextSection = document.getElementById(`section-${currentSection + 1}`);
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 
-    <!-- Segunda fila: Texto izquierda, Imagen derecha -->
+    function prevSection(currentSection) {
+      const prevSection = document.getElementById(`section-${currentSection - 1}`);
+      if (prevSection) {
+        prevSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 
-    <div class="image-container">
-      <img src="/imagenes/ollas.JPG" alt="Sistema de Control">
-    </div>
-    <div class="description-container">
-      <h3>Etapas en proceso de cerveza</h3>
-      <p>El sistema consta de tres ollas escalonadas diseñadas para procesar cerveza en diferentes
-        etapas del proceso, cada una trabajando a una temperatura específica o dentro de un rango.
-        Las ollas están conectadas mediante válvulas que permiten transferir el contenido entre ellas de manera
-        controlada.</p>
-    </div>
-
-    <!-- Tercera fila: Imagen izquierda, Texto derecha -->
-
-    <div class="description-container">
-      <h3>Olla 1</h3>
-      <div class="process-steps">
-        <h4>Precalentado</h4>
-        <ul>
-          <li>Estado inicial: Por defecto, el sistema está configurado en "OLLA 1".</li>
-        </ul>
-
-        <h4>Preparación:</h4>
-        <ul>
-          <li>Introducir el sensor de temperatura (parte metálica sumergida a unos 15 cm).</li>
-          <li>Calentar el agua hasta alcanzar 75°C.</li>
-        </ul>
-
-        <h4>Propósito:</h4>
-        <ul>
-          <li>Este paso prepara el agua para que, al mezclarse en la Olla 2 con la malta, la temperatura baje a un
-            promedio de 67°C.</li>
-        </ul>
-
-        <h4>Acciones automáticas:</h4>
-        <ul>
-          <li>Al alcanzar los 75°C, el sistema:</li>
-          <ul class="sub-list">
-            <li>Emite una alerta sonora durante 6 segundos.</li>
-            <li>Enciende el LED rojo como indicador.</li>
-          </ul>
-        </ul>
-      </div>
-    </div>
-
-    <div class="image-container">
-      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
-    </div>
-
-    <!-- Cuarta fila: Texto izquierda, Imagen derecha -->
-    <div class="image-container">
-      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
-    </div>
-
-
-    <div class="description-container">
-      <h3>Olla 2</h3>
-      <div class="process-steps">
-        <h4>Proceso de Macerado</h4>
-        <ul>
-          <li>Estado inicial: Seleccionar "OLLA 2" en el sistema presionando el botón selector.</li>
-        </ul>
-
-        <h4>Preparación:</h4>
-        <ul>
-          <li>Retirar el sensor de temperatura de la Olla 1 y colocarlo en la Olla 2 a la misma profundidad.</li>
-          <li>Agregar la malta al agua siguiendo la proporción 3:1 agua/malta.</li>
-        </ul>
-
-        <h4>Proceso:</h4>
-        <ul>
-          <li>Mantener la temperatura entre 65°C y 70°C durante 60 minutos.</li>
-          <li>Si la temperatura se desvía del rango (supera los 70°C o cae por debajo de los 65°C), se debe:</li>
-          <ul class="sub-list">
-            <li>Ajustar mediante calentamiento (prender el fuego) o enfriamiento (por agitación).</li>
-          </ul>
-        </ul>
-
-        <h4>Acciones automáticas:</h4>
-        <ul>
-          <li>Notificación de alerta sonora y activación del LED indicador si la temperatura sale del rango establecido.
-          </li>
-        </ul>
-
-        <h4>Propósito:</h4>
-        <ul>
-          <li>Este paso extrae los azúcares de la malta, preparando el mosto para la siguiente etapa.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Quinta fila: Imagen izquierda, Texto derecha -->
-    <div class="description-container">
-      <h3>Olla 3</h3>
-      <div class="process-steps">
-        <h4>Ebullición y Enfriado</h4>
-        <ul>
-          <li>Estado inicial: Seleccionar "OLLA 3" en el sistema presionando el botón selector.</li>
-        </ul>
-
-        <h4>Preparación:</h4>
-        <ul>
-          <li>Retirar el sensor de temperatura de la Olla 2 y colocarlo en la Olla 3 a la misma profundidad.</li>
-        </ul>
-
-        <h4>Proceso:</h4>
-        <ul>
-          <li>Ebullición:</li>
-          <ul class="sub-list">
-            <li>Elevar la temperatura hasta el punto de ebullición y mantenerla durante 60 minutos.</li>
-          </ul>
-        </ul>
-        <li>Enfriado:</li>
-        <ul class="sub-list">
-          <li>Reducir la temperatura rápidamente hasta 30°C.</li>
-        </ul>
-        </ul>
-
-        <h4>Propósito:</h4>
-        <ul>
-          <li>Preparar el mosto para la adición de levaduras y prevenir contaminación.</li>
-        </ul>
-
-        <h4>Acciones automáticas:</h4>
-        <ul>
-          <li>Notificación de alerta cuando la temperatura descienda hasta los 30°C.</li>
-          <li>Acción manual: Agregar las levaduras para continuar con el proceso de fermentación.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="image-container">
-      <img src="/imagenes/cervezas_baul.jpg" alt="Sensores del Sistema">
-    </div>
-
-    <!-- Sexta fila: Texto izquierda, Imagen derecha -->
-
-    <div class="image-container">
-      <img src="/imagenes/HISTORIAL.JPG" alt="Sensores del Sistema">
-    </div>
-
-    <div class="description-container">
-      <h3>Descargar Historial</h3>
-      <div class="process-steps">
-        <h4>Características de la función</h4>
-        <ul>
-          <li>La función Descargar Historial permite obtener un registro completo de las temperaturas recopiladas a lo
-            largo de todo el proceso de elaboración de la cerveza.</li>
-        </ul>
-
-        <h4>Formatos de descarga:</h4>
-        <ul>
-          <li>Gráficos:</li>
-          <ul class="sub-list">
-            <li>PNG, JPEG, SVG.</li>
-          </ul>
-          <li>Datos:</li>
-          <ul class="sub-list">
-            <li>CSV, XLS.</li>
-          </ul>
-        </ul>
-
-        <h4>Procedimiento de descarga:</h4>
-        <ul>
-          <li>Ubicar el botón de tres barras localizado en la esquina superior derecha del gráfico de temperatura.</li>
-          <li>Al hacer clic en este botón, se despliega un menú con las opciones de exportación disponibles.</li>
-          <li>Seleccionar el formato deseado (imagen o datos).</li>
-          <li>La descarga se iniciará automáticamente.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <button id="close-tab-btn">Cerrar Manual</button>
-  </footer>
-
-  <script src="manual.js"></script>
+    document.getElementById('close-tab-btn').addEventListener('click', function () {
+      window.close();
+    });
+  </script>
 </body>
 
 </html>
