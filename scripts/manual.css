@@ -17,7 +17,6 @@ body {
   width: 100%;
   height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden;
   position: relative;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
@@ -77,7 +76,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   max-width: 1200px;
   width: 100%;
   height: 100%;
@@ -91,25 +90,33 @@ body {
   padding: 10px;
   max-height: 90vh;
   overflow-y: auto;
-  overflow-x: hidden;
+  touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
-  touch-action: auto;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  min-width: 300px;
+  max-width: 600px;
 }
 
 .image-container {
-  flex-shrink: 0;
+  flex: 1;
   padding: 10px;
   max-height: 90vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  max-width: 500px;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container img {
   max-width: 100%;
+  max-height: 80vh;
   height: auto;
+  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -249,67 +256,19 @@ footer {
   }
   
   .content-section {
-    padding: 20px; /* Añade padding para que el texto no toque los bordes */
-  }
-  
-  .content-section {
     flex-direction: column;
+    align-items: center;
     padding: 10px;
-    gap: 15px;
-    overflow-y: auto;
-    height: auto;
-    max-height: 100vh;
   }
 
   .description-container,
   .image-container {
     width: 100%;
-    flex: none;
-    max-height: none;
-    padding: 10px;
+    max-width: 100%;
+    min-width: auto;
   }
 
-  .image-container {
-    order: -1; /* Esto hace que la imagen aparezca primero */
-  }
-
-  .description-container {
-    margin-top: 10px;
-  }
-
-  .nav-button {
-    width: 70px;
-    height: 70px;
-  }
-
-  .nav-button i {
-    padding: 12px;
-    border-width: 0 6px 6px 0;
-  }
-
-  .nav-left {
-    left: 10px;
-  }
-
-  .nav-right {
-    right: 10px;
-  }
-
-  h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  h4 {
-    font-size: 16px;
-  }
-
-  p, li {
-    font-size: 14px;
-  }
-
-  #close-tab-btn {
-    padding: 15px 25px;
-    font-size: 16px;
+  .image-container img {
+    max-height: 50vh;
   }
 }
