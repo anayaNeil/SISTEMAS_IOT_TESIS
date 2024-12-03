@@ -111,23 +111,22 @@ body {
 }
 
 .description-container h3 {
+  color: #4db6ff;
+  font-size: 2em;
+  margin: 0 0 25px 0;
+  text-shadow: 0 0 12px rgba(77, 182, 255, 0.4);
+  font-weight: 700;
+  letter-spacing: 2px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.8em;
-  margin-bottom: 18px;
-  color: #b8c6ff;
-  text-shadow: 0 0 6px rgba(184, 198, 255, 0.3);
-  font-weight: 500;
-  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .description-container h4 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.5em;
-  margin-bottom: 15px;
   color: #a0b4ff;
-  text-shadow: 0 0 5px rgba(160, 180, 255, 0.3);
+  font-size: 1.5em;
+  margin: 25px 0 15px 0;
+  text-shadow: 0 0 6px rgba(160, 180, 255, 0.3);
   font-weight: 500;
-  letter-spacing: 0.8px;
 }
 
 .description-container h5 {
@@ -168,15 +167,18 @@ body {
 
 .description-container ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .description-container ul li {
   position: relative;
-  padding-left: 20px;
-  margin-bottom: 12px;
+  padding-left: 25px;
+  margin-bottom: 5px;
   line-height: 1.8;
-  font-size: 1.1em;
+  font-size: 1.15em;
   color: #d4e0ff;
+  font-weight: 500;
 }
 
 .description-container ul li::before {
@@ -189,18 +191,46 @@ body {
   text-shadow: 0 0 5px rgba(120, 144, 255, 0.5);
 }
 
-.description-container ol li {
-  padding-left: 10px;
-  margin-bottom: 12px;
-  line-height: 1.8;
+.description-container ul p {
+  margin: 5px 0 15px 25px;
   font-size: 1.1em;
   color: #d4e0ff;
+  line-height: 1.6;
+  font-weight: normal;
+  padding-right: 20px;
 }
 
-.description-container li:hover {
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
+.description-container ul ul {
+  margin: 10px 0 10px 20px;
+}
+
+.description-container ul ul li {
+  font-size: 1.05em;
+  color: #8ca2ff;
+}
+
+.description-container ul ul li::before {
+  content: '◦';
+  font-size: 1.4em;
+  color: #6080ff;
+}
+
+.description-container .sub-list {
+  margin-left: 40px;
+}
+
+.description-container .sub-list li {
+  color: #b8c6ff;
+  font-size: 1em;
+}
+
+.description-container li {
+  color: #d4e0ff;
+  text-shadow: none;
+}
+
+.description-container li::before {
+  text-shadow: 0 0 5px rgba(120, 144, 255, 0.5);
 }
 
 .description-container li strong {
