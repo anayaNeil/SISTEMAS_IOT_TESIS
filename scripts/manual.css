@@ -179,7 +179,7 @@ body {
   margin-bottom: 5px;
   line-height: 1.8;
   font-size: 1.15em;
-  color: #d4e0ff;
+  color: #5978c9;
   font-weight: 500;
 }
 
@@ -296,6 +296,7 @@ body {
   object-fit: contain;
   position: relative;
   z-index: 2;
+  background-color:rgb(45 58 93);
 }
 
 /* Botones de navegación */

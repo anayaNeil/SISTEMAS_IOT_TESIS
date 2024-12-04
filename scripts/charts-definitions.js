@@ -113,7 +113,7 @@ function createTemperatureChart(ollaState) {
       }
     },
     yAxis: {
-      title: { text: 'Temperatura (°C)' },
+      title: { text: '' },
       min: yAxisConfig.min,
       max: yAxisConfig.max,
       plotLines: plotLinesConfig
