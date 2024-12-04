@@ -33,18 +33,34 @@ const logoutButton = document.querySelector('#logout-link');
 const googleButton = document.querySelector('#google-login');
 const forgotPassword = document.querySelector('#forgot-password');
 
+// Variable para controlar si el usuario inició sesión manualmente
+let isManualLogin = false;
+
 // Login con email y contraseña
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
   
+  // Obtener el botón de login
+  const loginButton = document.querySelector('#login-button');
+  
+  // Deshabilitar el botón mientras se procesa
+  loginButton.disabled = true;
+  
   const email = document.querySelector('#input-email').value;
   const password = document.querySelector('#input-password').value;
+  
+  isManualLogin = true; // Indicar que es un inicio de sesión manual
   
   auth.signInWithEmailAndPassword(email, password).then(() => {
     loginForm.reset();
     document.getElementById('error-message').style.display = 'none';
   }).catch(err => {
+    isManualLogin = false; // Resetear si hay error
     document.getElementById('error-message').style.display = 'block';
+  }).finally(() => {
+    // Rehabilitar el botón y restaurar su texto
+    loginButton.disabled = false;
+    loginButton.textContent = 'Login';
   });
 });
 
@@ -107,6 +123,20 @@ forgotPassword.addEventListener('click', (e) => {
 logoutButton.addEventListener('click', (e) => {
   e.preventDefault();
   auth.signOut();
+});
+
+// Escuchar el estado de la autenticación
+auth.onAuthStateChanged(user => {
+  if (user && isManualLogin) {
+      console.log("Usuario logueado");
+      console.log(user);
+      setupUI(user);  // Función para configurar la UI después del login
+      showAuthenticatedUI(user); // Muestra la barra de autenticación con detalles del usuario
+  } else {
+      console.log("Usuario deslogueado");
+      setupUI();  // Limpia la UI si el usuario está deslogueado
+      showLoginForm(); // Muestra el formulario de login
+  }
 });
 
 // Monitor de estado de autenticación

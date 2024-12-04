@@ -435,7 +435,7 @@ footer {
 /* Estilos para el indicador de deslizamiento */
 .swipe-indicator {
   position: absolute;
-  bottom: 20px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -443,23 +443,19 @@ footer {
 }
 
 .swipe-indicator img {
-  width: 64px;
+  width: 84px;
   height: auto;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
 }
 
 @keyframes blinkAndHide {
   0% { opacity: 0; }
-  10% { opacity: 1; } /* 0.8s */
-  25% { opacity: 0; } /* 2s */
-  35% { opacity: 1; } /* 2.8s */
-  50% { opacity: 0; } /* 4s */
-  60% { opacity: 1; } /* 4.8s */
-  75% { opacity: 0; } /* 6s */
-  85% { opacity: 1; } /* 6.8s */
-  100% { opacity: 0; } /* 8s */
+  5% { opacity: 1; }    /* 1s */
+  45% { opacity: 1; }   /* 9s */
+  50% { opacity: 0; }   /* 10s */
+  95% { opacity: 0; }   /* 19s */
+  100% { opacity: 0; }  /* 20s */
 }
-
 /* Solo mostrar en dispositivos móviles */
 @media screen and (min-width: 768px) {
   .swipe-indicator {
@@ -475,9 +471,10 @@ footer {
   }
 
   .content-section {
+    
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    
   }
 
   .description-container,
@@ -490,4 +487,26 @@ footer {
   .image-container img {
     max-height: 50vh;
   }
+}
+
+
+
+/* Estilo para la barra de desplazamiento */
+.description-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.description-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.description-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.description-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
