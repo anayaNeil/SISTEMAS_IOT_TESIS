@@ -34,8 +34,10 @@ const setupUI = (user) => {
 
     dbRefOllaState.on('value', (snap) => {
       let ollaState = snap.val();
+      window.ollaState = ollaState; // Asignar el valor a la variable global
       console.log('OllaState actualizado:', ollaState);
       updateMaxLevelLine(chartT, ollaState);
+      contador(ollaState, window.currentTemperature); // Llama a la función contador
     });
 
     dbRefTemp.on('value', (snap) => {
@@ -69,7 +71,9 @@ const setupUI = (user) => {
         });
 
       // Guarda el valor de la temperatura globalmente o en localStorage para compartirlo con otros scripts
-      window.currentTemperature = tempValue;  // Puedes usar esta variable global  
+      window.currentTemperature = tempValue;
+      // Llamar a la función contador cuando se actualiza la temperatura
+      contador(window.ollaState, parseFloat(tempValue));
     });
   } else {
     // Mostrar login
@@ -81,3 +85,6 @@ const setupUI = (user) => {
   }
 
 };
+
+// Crear el atributo activar_buzzer en la base de datos si no existe
+firebase.database().ref('public_data/sensor_readings/activar_buzzer').set(false);

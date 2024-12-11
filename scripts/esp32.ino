@@ -60,6 +60,7 @@ String tempPath;
 String humPath;
 String presPath;
 String ollaStatePath;
+String buzzerStatePath;  // Nueva ruta para el estado del buzzer
 
 // Variables del menú
 int currentOlla = 1;
@@ -148,6 +149,7 @@ void setup(){
   humPath = databasePath + "/humidity";
   presPath = databasePath + "/pressure";
   ollaStatePath = databasePath + "/olla_state";
+  buzzerStatePath = databasePath + "/buzzer_state";  // Nueva ruta para el buzzer
 
   // Configuración del pin de la resistencia
   pinMode(RELAY_PIN, OUTPUT);
@@ -165,7 +167,6 @@ void loop() {
   unsigned long currentMillis = millis();
 
   // Leer temperatura desde el MAX6675  ajustada a adicion de cable termico de  1.5m 
-
   temperature = thermocouple.readCelsius() - 1.5;
 
   handleButtonPress();  // Cambiar de olla al pulsar el botón
@@ -174,10 +175,9 @@ void loop() {
     displayMenu();  // Muestra el menú de selección de olla
   } else {
     displayTemperature();  // Muestra la temperatura actual
-    controlAlarma();       // Controla la alarma según los límites de temperatura
   }
 
-  // Enviar nuevas lecturas a Firebase cada 5 segundos
+  // Verificar el estado del buzzer en Firebase
   if (Firebase.ready() && (currentMillis - sendDataPrevMillis > firebaseInterval)) {
     sendDataPrevMillis = currentMillis;
 
@@ -186,7 +186,36 @@ void loop() {
     sendFloat(humPath, humidity);
     sendFloat(presPath, pressure);
     sendInt(ollaStatePath, currentOlla);
+
+    // Leer el estado del buzzer desde Firebase
+    if (Firebase.RTDB.getBool(&fbdo, buzzerStatePath.c_str())) {
+      if (fbdo.dataType() == "boolean") {
+        bool buzzerState = fbdo.boolData();
+        digitalWrite(BUZZER_PIN, buzzerState ? HIGH : LOW);
+        digitalWrite(RELAY_PIN, buzzerState ? HIGH : LOW);
+      }
+    }
   }
+
+
+    // Leer el valor de activar_buzzer
+    if (Firebase.getBool(fbdo, "/public_data/sensor_readings/activar_buzzer")) {
+        bool activarBuzzer = fbdo.dataBool();
+        
+        if (activarBuzzer) {
+            // Activar el buzzer con pulsaciones
+            for (int i = 0; i < 20; i++) { // 20 pulsaciones para 10 segundos
+                digitalWrite(BUZZER_PIN, HIGH); // Encender el buzzer
+                delay(250); // Mantener encendido por 0.25 segundos
+                digitalWrite(BUZZER_PIN, LOW); // Apagar el buzzer
+                delay(250); // Mantener apagado por 0.25 segundos
+            }
+            // Esperar 10 segundos antes de volver a leer
+            delay(10000); 
+        }
+    }    
+
+
 }
 
 void handleButtonPress() {
@@ -206,6 +235,8 @@ void handleButtonPress() {
     lastButtonPress = millis();
   }
 }
+
+
 
 void displayMenu() {
   display.clearDisplay();
